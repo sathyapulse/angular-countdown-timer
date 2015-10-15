@@ -1,7 +1,7 @@
 {
-  "name": "angular-timer",
+  "name": "angular-countdown-timer",
   "version": "1.0.0",
-  "homepage": "https://github.com/sathyapulse/angular-timer",
+  "homepage": "https://github.com/sathyapulse/angular-countdown-timer",
   "description": "This is the pure angular countdown timer",
   "main": "timer.js",
   "license": "MIT"
