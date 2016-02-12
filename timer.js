@@ -10,9 +10,6 @@ angular.module('timer', [])
         startAt: '=',
       },
       replace: false,
-      templateUrl: function(elem, attr) {
-        return attr.template;
-      },
       link: function(scope) {
 
       },
@@ -90,7 +87,9 @@ angular.module('timer', [])
         });
 
         var tick = function tick() {
-          calculateTimeUnits();
+		  if($scope.timerControl.onTick) {
+			$scope.timerControl.onTick(calculateTimeUnits());
+		  }
           $scope.$emit('timer-tick', {
             timeoutId: $scope.timeoutId,
             remaningTime: $scope.remaningTime,
@@ -123,6 +122,13 @@ angular.module('timer', [])
           $scope.seconds = Math.floor(($scope.remaningTime) % 60);
           $scope.minutes = Math.floor((($scope.remaningTime / (60)) % 60));
           $scope.hours = Math.floor($scope.remaningTime / 3600);
+
+          return {
+            "millis": $scope.millis,
+            "seconds": $scope.seconds,
+            "minutes": $scope.minutes,
+            "hours": $scope.hours
+          };
         }
       }]
     };
